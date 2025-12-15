@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Juegos — Quick Grid</title>
+  <style>
+    /* Colores: blanco y negro solamente */
+    :root {
+      --bg: #ffffff;
+      --fg: #000000;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, system-ui, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg)
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 32px auto;
+      padding: 0 16px
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 0
+    }
+
+    /* Grid de 4 en 4 */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px
+    }
+
+    .card {
+      border: 2px solid var(--fg);
+      padding: 12px;
+      border-radius: 8px;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between
+    }
+
+    .thumb {
+      height: 70px;
+      border: 1px dashed var(--fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px
+    }
+
+    .title {
+      font-weight: 700;
+      margin: 8px 0 6px
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px
+    }
+
+    .btn {
+      border: 2px solid var(--fg);
+      background: var(--bg);
+      color: var(--fg);
+      padding: 6px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600
+    }
+
+    /* Modal simple para mostrar el HTML del juego si quieres pegarlo dentro */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6)
+    }
+
+    .modal .panel {
+      background: var(--bg);
+      color: var(--fg);
+      max-width: 900px;
+      width: 95%;
+      max-height: 90%;
+      overflow: auto;
+      border: 2px solid var(--fg);
+      padding: 16px;
+      border-radius: 8px
+    }
+
+    /* Responsive: menos columnas en pantallas pequeñas */
+    @media (max-width:1000px) {
+      .games-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+    }
+
+    @media (max-width:700px) {
+      .games-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media (max-width:420px) {
+      .games-grid {
+        grid-template-columns: repeat(1, 1fr)
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Grid rápido de juegos (4 en 4)</h1>
+      <small>Colores: blanco y negro — Diseño mínimo</small>
+    </header>
+
+    <main>
+      <div class="games-grid">
+
+        <!-- EJEMPLO DE TARJETA 1 -->
+        <article class="card" data-game-id="game-1">
+          <div>
+            <div class="thumb">Miniatura</div>
+            <div class="title">Juego 1</div>
+            <div class="desc">Descripción corta del juego.</div>
+          </div>
+
+          <!-- AQUI ES DONDE TIENES QUE PEGAR EL HTML DEL JUEGO -->
+          <!-- Dentro del div .game-html pon el código/iframe/elementos que carga tu juego -->
+          <div class="game-html" style="display:none;">
+            <!-- INSERT GAME HTML HERE for game-1 -->
+          </div>
+
+          <div class="actions">
+            <!-- PON AQUÍ EL LINK DEL ARCHIVO DEL JUEGO -->
+            <a href="/Juegos/cursor_death/index.html" class="btn">Abrir juego</a>
+          </div>
+        </article>
+
+        <!-- DUPLICA / MODIFICA LAS TARJETAS: las tarjetas siguientes son ejemplos. -->
+        <article class="card" data-game-id="game-2">
+          <div>
+            <div class="thumb">Miniatura</div>
+            <div class="title">Juego 2</div>
+            <div class="desc">Descripción corta del juego.</div>
+          </div>
+          <div class="game-html" style="display:none;">
+            <!-- INSERT GAME HTML HERE for game-2 -->
+          </div>
+          <div class="actions">
+            <!-- PON AQUÍ EL LINK DEL ARCHIVO DEL JUEGO -->
+            <a href="ruta-del-juego.html" class="btn">Abrir juego</a>
+          </div>
+        </article>
+
+        <article class="card" data-game-id="game-3">
+          <div>
+            <div class="thumb">Miniatura</div>
+            <div class="title">Juego 3</div>
+            <div class="desc">Descripción corta del juego.</div>
+          </div>
+          <div class="game-html" style="display:none;">
+            <!-- INSERT GAME HTML HERE for game-3 -->
+          </div>
+          <div class="actions">
+            <!-- PON AQUÍ EL LINK DEL ARCHIVO DEL JUEGO -->
+            <a href="ruta-del-juego.html" class="btn">Abrir juego</a>
+          </div>
+        </article>
+
+        <article class="card" data-game-id="game-4">
+          <div>
+            <div class="thumb">Miniatura</div>
+            <div class="title">Juego 4</div>
+            <div class="desc">Descripción corta del juego.</div>
+          </div>
+          <div class="game-html" style="display:none;">
+            <!-- INSERT GAME HTML HERE for game-4 -->
+          </div>
+          <div class="actions">
+            <!-- PON AQUÍ EL LINK DEL ARCHIVO DEL JUEGO -->
+            <a href="ruta-del-juego.html" class="btn">Abrir juego</a>
+          </div>
+        </article>
+
+        <!-- Añade más tarjetas tantas filas como quieras: cada fila tendrá 4 tarjetas por defecto -->
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal para mostrar el HTML del juego -->
+  <div class="modal" id="modal">
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <strong id="modal-title">Juego</strong>
+        <button id="close-modal" class="btn">Cerrar</button>
+      </div>
+      <div id="modal-body">Aquí se cargará el HTML del juego.</div>
+    </div>
+  </div>
+
+  <script>
+    // Código mínimo para abrir el modal y mostrar el contenido que pegues dentro de .game-html
+    function $(s, root = document) { return root.querySelector(s) }
+    function $all(s, root = document) { return Array.from(root.querySelectorAll(s)) }
+
+    const modal = $('#modal')
+    const modalBody = $('#modal-body')
+    const modalTitle = $('#modal-title')
+    const closeBtn = $('#close-modal')
+
+    $all('.open-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const id = btn.dataset.target
+        const card = document.querySelector(`[data-game-id="${id}"]`)
+        const htmlContainer = card.querySelector('.game-html')
+        modalTitle.textContent = card.querySelector('.title').textContent
+        // Si quieres que el juego se ejecute directamente, guarda tu iframe o HTML aquí
+        modalBody.innerHTML = htmlContainer.innerHTML || '<em>No hay HTML del juego. Pega tu código dentro del div .game-html</em>'
+        modal.style.display = 'flex'
+      })
+    })
+
+    closeBtn.addEventListener('click', () => { modal.style.display = 'none'; modalBody.innerHTML = '' })
+
+    // Botón que copia el HTML del .game-html al portapapeles
+    $all('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.target
+        const card = document.querySelector(`[data-game-id="${id}"]`)
+        const htmlContainer = card.querySelector('.game-html')
+        const text = htmlContainer.innerHTML.trim()
+        if (!text) { alert('No hay HTML dentro del div .game-html'); return }
+        navigator.clipboard.writeText(text).then(() => alert('HTML copiado al portapapeles'))
+      })
+    })
+
+    // Sencilla guía: busca los comentarios "INSERT GAME HTML HERE" para saber dónde pegar el HTML de cada juego.
+  </script>
+</body>
+
+</html>
